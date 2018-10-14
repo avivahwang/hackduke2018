@@ -1,12 +1,18 @@
 import hashlib
 from guizero import App, Text, TextBox, PushButton, Window
-def Main():
+
+def main():
 	def finish():
-		quit()
+		app.destroy()
+
+
 	def writedata():
 		ind = docnames.index(docname.value)
 		docHashed = hashlib.sha256(docusernames[ind].encode()).hexdigest()
 		passhashed = hashlib.sha256(password.value.encode()).hexdigest()
+		ret.append(username.value)
+		ret.append(docHashed)
+		ret.append(passhashed)
 		if not usernames:
 			towrite = "%s\t%s\t%s" % (username.value,docHashed,passhashed)
 		else:
@@ -16,6 +22,8 @@ def Main():
 		findmatch.destroy()
 		exit.enable()
 		exit.show()
+
+
 	def matchDoctor():
 		if docname.value in docnames:
 			earlyexit.hide()
@@ -24,6 +32,8 @@ def Main():
 		else:
 			matchintro.value = "Your doctor's name cannot be found.\n(S)he may not have created an account yet."
 			earlyexit.show()
+
+
 	def checkgood():
 		if username.value in usernames:
 			success.value = "This username is already taken. Please try another."
@@ -32,17 +42,22 @@ def Main():
 			app.disable()
 			findmatch.enable()
 			findmatch.show()
+
+
 	def allfilled():
 		if (username.value != "" and password.value != "" and app.enabled):
 			confirm.enable()
 		else:
 			confirm.disable()
+
+
 	FILENAME = "patients.txt" # Format: username TAB hashedDocUsername TAB hashedPassword
 	DOCTORS = "doctors.txt" # Format: name TAB username TAB hashedPassword
 	patients = []
 	usernames = []
 	docnames = []
 	docusernames = []
+	ret = []
 	try:
 		with open(FILENAME) as p:
 			for line in p:
@@ -86,5 +101,7 @@ def Main():
 		if app.enabled:
 			success.repeat(100, allfilled)
 		app.display()
+		return ret
+
 if __name__ == "__main__":
-	Main()
+	main()
