@@ -4,7 +4,8 @@ from guizero import App, Text, TextBox, PushButton, Window
 def main():
 	def finish():
 		app.destroy()
-
+	def finish2():
+		quit()
 
 	def writedata():
 		ind = docnames.index(docname.value)
@@ -75,7 +76,7 @@ def main():
 	except:
 		err = App(title = "Error")
 		message = Text(err, text = "There are no doctors in the database.\nPlease ask your doctor to register first.")
-		badending = PushButton(err, text = "Exit", command = finish)
+		badending = PushButton(err, text = "Exit", command = finish2)
 		err.display()
 	else:
 		app = App(title = "New patient registration")
@@ -102,6 +103,7 @@ def main():
 			success.repeat(100, allfilled)
 		app.display()
 		return ret
+
 
 if __name__ == "__main__":
 	main()
