@@ -5,15 +5,14 @@ Created on Oct 13, 2018
 '''
 
 import socket
-from _thread import *
 from threading import *
 import threading
 
 HOST = '127.0.0.1'
 PORT = 65432
-    
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    
+
 def execute_client():
     print('Type "exit" at any time to leave this chat')
 
@@ -28,11 +27,11 @@ def execute_client():
             break
         print('Received message from doctor:', data.decode('ascii'))
     s.close()
-    
+
 def Main():
     s.connect((HOST,PORT))
     this_thread = Thread(target=execute_client)
     this_thread.start()
-    
+
 if __name__ == '__main__':
     Main()

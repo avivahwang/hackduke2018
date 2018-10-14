@@ -5,7 +5,6 @@ Created on Oct 13, 2018
 '''
 
 import socket
-from _thread import *
 from threading import *
 import threading
 
@@ -14,7 +13,7 @@ addresses = []
 
 HOST = '127.0.0.1' #local host
 PORT = 65432
-    
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST,PORT))
 
@@ -36,7 +35,7 @@ def new_thread(conn, chat_num):
             break
     print('Now closing chat with patient', chat_num)
     conn.close()
-    
+
 def accept_connections():
     chat_number = 1
     while True:
@@ -47,7 +46,7 @@ def accept_connections():
         #start_new_thread(new_thread,(s,conn,chat_number))
         Thread(target=new_thread, args=(conn,chat_number)).start()
         chat_number += 1
-        
+
 
 def Main():
     #s.bind((socket.gethostname(), PORT))
@@ -56,6 +55,6 @@ def Main():
     accept.start()
     accept.join()
     s.close()
-    
+
 if __name__ == '__main__':
     Main()
