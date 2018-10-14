@@ -34,11 +34,8 @@ def execute_client():
 		history4.value = "You: %s" % (message.value)
 		message.clear()
 		checknew()
-	#print('Type "exit" at any time to leave this chat')
 	app = App(title = "Chat")
 	toptext = Text(app, text = 'Type "exit" at any time to leave this chat\n')
-    #while True:
-	#message = input("What is your message? ")
 	history1 = Text(app, text = "")
 	history2 = Text(app, text = "")
 	history3 = Text(app, text = "")
@@ -48,14 +45,6 @@ def execute_client():
 	goahead = PushButton(app, text = "Send", command = push)
 	app.display()
 	s.close()
-	#s.send(message.encode('ascii'))
-	#if message == 'exit':
-		#break
-	#data = s.recv(4096)
-	#if data.decode('ascii') == 'exit':
-	#	print('Doctor has ended the chat session')
-	#	break
-	#print('Received message from doctor:', data.decode('ascii'))
 
 def Main():
 	s.connect((HOST,PORT))
