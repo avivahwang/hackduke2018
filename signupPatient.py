@@ -1,3 +1,4 @@
+from user_functions import *
 import hashlib
 from guizero import App, Text, TextBox, PushButton, Window
 
@@ -11,9 +12,7 @@ def main():
 		ind = docnames.index(docname.value)
 		docHashed = hashlib.sha256(docusernames[ind].encode()).hexdigest()
 		passhashed = hashlib.sha256(password.value.encode()).hexdigest()
-		ret.append(username.value)
-		ret.append(docHashed)
-		ret.append(passhashed)
+		create_patient(username.value, docHashed, passhashed)
 		if not usernames:
 			towrite = "%s\t%s\t%s" % (username.value,docHashed,passhashed)
 		else:

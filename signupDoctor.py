@@ -1,6 +1,7 @@
 import sys
 import hashlib
 import os
+from user_functions import *
 from guizero import App, Text, TextBox, PushButton
 
 
@@ -10,6 +11,7 @@ def finish():
 
 def adduser():
 	passhashed = hashlib.sha256(password.value.encode()).hexdigest()
+	create_doctor(prompt1.value, username.value, passhashed)
 	if not doctors:
 		towrite = "%s\t%s\t%s" % (name.value,username.value,passhashed)
 	else:
