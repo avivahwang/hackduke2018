@@ -32,6 +32,7 @@ def new_thread(conn, chat_num):
         doc_message = input("Doctor, what is your message? ")
         conn.send(doc_message.encode('ascii'))
         if doc_message == 'exit':
+            print_lock.release()
             break
     print('Now closing chat with patient', chat_num)
     conn.close()
