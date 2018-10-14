@@ -23,10 +23,13 @@ def Main():
 			success.value = "Username not found"
 	def endfunc():
 		if cont.enabled:
+			ind = usernames.index(username.value)
 			ret.append(username.value)
+			ret.append(dochashes[ind])
 			ret.append(True)
 		app.destroy()
-	FILENAME = "doctors.txt"
+	FILENAME = "patients.txt"
+	dochashes = []
 	usernames = []
 	passhashes = []
 	ret = []
@@ -34,17 +37,18 @@ def Main():
 		with open(FILENAME) as d:
 			for line in d:
 				fields = line.split("\t")
-				usernames.append(fields[1])
+				usernames.append(fields[0])
+				dochashes.append(fields[1])
 				passhashes.append(fields[2].strip())
 	except:
 		err = App(title = "Error")
-		message = Text(err, text = "There are no doctors in the database.\nPlease register first.")
+		message = Text(err, text = "There are no patients in the database.\nPlease register first.")
 		badending = PushButton(err, text = "Exit", command = finish)
 		err.display()
-		return["",False]
+		return["","",False]
 	else:
-		app = App(title = "Provider Login")
-		greet = Text(app, text = "Welcome to AnonyComm!\nThis is the login for providers.\n")
+		app = App(title = "Patient Login")
+		greet = Text(app, text = "Welcome to AnonyComm!\nThis is the login for patients.\n")
 		prompt1 = Text(app, text = "Username:")
 		username = TextBox(app, width = 20)
 		prompt2 = Text(app, text = "Password:")
@@ -60,7 +64,7 @@ def Main():
 		app.on_close(endfunc)
 		app.display()
 		if not ret:
-			ret = ["",False]
+			ret = ["","",False]
 		return ret
 if __name__ == "__main__":
 	Main()
