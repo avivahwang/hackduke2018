@@ -1,7 +1,7 @@
 from signupPatient import *
 from pymodm import connect
 import models
-import datetime
+# import datetime
 
 connect("mongodb://vcm-6782.vm.duke.edu:27017/test")
 
