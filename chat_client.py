@@ -5,24 +5,34 @@ Created on Oct 13, 2018
 '''
 
 import socket
+from _thread import *
+from threading import *
+import threading
 
-def Main():
-    HOST = '127.0.0.1'
-    PORT = 65432
+HOST = '127.0.0.1'
+PORT = 65432
     
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((HOST,PORT))
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+def execute_client():
+    print 'Type "exit" at any time to leave this chat'
+
     while True:
         message = raw_input("What is your message? ")
         s.send(message.encode('ascii'))
-        data = s.recv(4096)
-        print 'Received message from doctor:', data.decode('ascii')
-        ask = raw_input("Do you want to exit this chat? (y/n) ")
-        if ask == 'y':
+        if message == 'exit':
             break
-        else:
-            continue
+        data = s.recv(4096)
+        if data.decode('ascii') == 'exit':
+            print 'Doctor has ended the chat session'
+            break
+        print 'Received message from doctor:', data.decode('ascii')
     s.close()
+    
+def Main():
+    s.connect((HOST,PORT))
+    this_thread = Thread(target=execute_client)
+    this_thread.start()
     
 if __name__ == '__main__':
     Main()
