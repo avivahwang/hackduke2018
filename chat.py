@@ -25,12 +25,17 @@ def new_thread(conn, chat_num):
         if not data:
             print_lock.release()
             break
+<<<<<<< HEAD
         if data.decode('ascii') == 'exit':
             print_lock.release()
             print 'Patient has ended the chat session'
             break
         print 'Received message from patient:', data.decode('ascii')
         doc_message = raw_input("Doctor, what is your message? ")
+=======
+        print('Received message from patient:', data.decode('ascii'))
+        doc_message = input("Doctor, what is your message? ")
+>>>>>>> f8d026c6fc6983a9eeba79f28a39d66a7f2f19ce
         conn.send(doc_message.encode('ascii'))
         if doc_message == 'exit':
             break
