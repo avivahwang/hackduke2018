@@ -19,10 +19,12 @@ def writedata():
 	exit.show()
 def matchDoctor():
 	if docname.value in docnames:
+		earlyexit.hide()
 		findmatch.disable()
 		writedata()
 	else:
 		matchintro.value = "Your doctor's name cannot be found.\n(S)he may not have created an account yet."
+		earlyexit.show()
 def checkgood():
 	if username.value in usernames:
 		success.value = "This username is already taken. Please try another."
@@ -79,6 +81,8 @@ else:
 	matchintro = Text(findmatch,"Please enter your doctor's name (First Last)")
 	docname = TextBox(findmatch, width = 20)
 	checkdoc = PushButton(findmatch, text = "Find your doctor", command = matchDoctor)
+	earlyexit = PushButton(findmatch, text = "Quit", command = finish)
+	earlyexit.hide()
 	findmatch.hide()
 	if app.enabled:
 		success.repeat(100, allfilled)
