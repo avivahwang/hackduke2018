@@ -35,7 +35,7 @@ def execute_client():
 		message.clear()
 		checknew()
 	app = App(title = "Chat")
-	toptext = Text(app, text = 'Type "exit" at any time to leave this chat\n')
+	toptext = Text(app, text = 'If you have an emergency, call 911 immediately.\n\nType "exit" at any time to leave this chat')
 	history1 = Text(app, text = "")
 	history2 = Text(app, text = "")
 	history3 = Text(app, text = "")
