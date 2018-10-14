@@ -15,7 +15,7 @@ PORT = 65432
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
 def execute_client():
-    print 'Type "exit" at any time to leave this chat'
+    print('Type "exit" at any time to leave this chat')
 
     while True:
         message = input("What is your message? ")

@@ -29,12 +29,12 @@ def new_thread(conn, chat_num):
             print_lock.release()
             print('Patient has ended the chat session')
             break
-        print 'Received message from patient:', data.decode('ascii')
+        print('Received message from patient:', data.decode('ascii'))
         doc_message = input("Doctor, what is your message? ")
         conn.send(doc_message.encode('ascii'))
         if doc_message == 'exit':
             break
-    print 'Now closing chat with patient', chat_num
+    print('Now closing chat with patient', chat_num)
     conn.close()
     
 def accept_connections():
