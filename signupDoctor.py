@@ -1,6 +1,4 @@
-import sys
 import hashlib
-import os
 from guizero import App, Text, TextBox, PushButton
 def finish():
 	quit()

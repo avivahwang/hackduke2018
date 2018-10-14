@@ -16,8 +16,8 @@ def new_thread(conn):
         if not data:
             print_lock.release()
             break
-        print 'Received message from patient:', data.decode('ascii')
-        doc_message = raw_input("Doctor, what is your message? ")
+        print('Received message from patient:', data.decode('ascii'))
+        doc_message = input("Doctor, what is your message? ")
         conn.send(doc_message.encode('ascii'))
     conn.close()
 

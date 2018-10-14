@@ -13,11 +13,11 @@ def Main():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((HOST,PORT))
     while True:
-        message = raw_input("What is your message? ")
+        message = input("What is your message? ")
         s.send(message.encode('ascii'))
         data = s.recv(4096)
-        print 'Received message from doctor:', data.decode('ascii')
-        ask = raw_input("Do you want to exit this chat? (y/n) ")
+        print('Received message from doctor:', data.decode('ascii'))
+        ask = input("Do you want to exit this chat? (y/n) ")
         if ask == 'y':
             break
         else:

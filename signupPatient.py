@@ -1,6 +1,4 @@
-import sys
 import hashlib
-import os
 from guizero import App, Text, TextBox, PushButton, Window
 def finish():
 	quit()
@@ -64,7 +62,7 @@ except:
 	badending = PushButton(err, text = "Exit", command = finish)
 	err.display()
 else:
-	app = App(title = "New user registration")
+	app = App(title = "New patient registration")
 	intro = Text(app, text = "Welcome to Litlitlit!\n")
 	prompt2 = Text(app, text = "Please enter your username.")
 	username = TextBox(app, width = 20)
