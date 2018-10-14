@@ -18,9 +18,14 @@ def Main():
 		exit.show()
 	def matchDoctor():
 		if docname.value in docnames:
-			earlyexit.hide()
-			findmatch.disable()
-			writedata()
+			ind = docnames.index(docname.value)
+			if checkkey.value == dockeys[ind]:
+				earlyexit.hide()
+				findmatch.disable()
+				writedata()
+			else:
+				matchintro.value = "Incorrect key."
+				earlyexit.show()
 		else:
 			matchintro.value = "Your doctor's name cannot be found.\n(S)he may not have created an account yet."
 			earlyexit.show()
@@ -43,6 +48,7 @@ def Main():
 	usernames = []
 	docnames = []
 	docusernames = []
+	dockeys = []
 	try:
 		with open(FILENAME) as p:
 			for line in p:
@@ -57,6 +63,7 @@ def Main():
 				fields = line.split("\t")
 				docnames.append(fields[0])
 				docusernames.append(fields[1])
+				dockeys.append(fields[3].strip())
 	except:
 		err = App(title = "Error")
 		message = Text(err, text = "There are no doctors in the database.\nPlease ask your doctor to register first.")
@@ -77,8 +84,10 @@ def Main():
 		exit = PushButton(app, text = "Finish", command = finish)
 		exit.hide()
 		findmatch = Window(app,title = "Doctor name entry")
-		matchintro = Text(findmatch,"Please enter your doctor's name (First Last)")
+		matchintro = Text(findmatch,text="Please enter your doctor's name (First Last)")
 		docname = TextBox(findmatch, width = 20)
+		keyprompt = Text(findmatch, text="Enter your doctor's six-digit verification key.")
+		checkkey = TextBox(findmatch, width = 20)
 		checkdoc = PushButton(findmatch, text = "Find your doctor", command = matchDoctor)
 		earlyexit = PushButton(findmatch, text = "Quit", command = finish)
 		earlyexit.hide()

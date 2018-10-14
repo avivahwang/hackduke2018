@@ -1,18 +1,21 @@
 import hashlib
 from guizero import App, Text, TextBox, PushButton
+import random
 def Main():
 	def finish():
 		quit()
 	def adduser():
 		passhashed = hashlib.sha256(password.value.encode()).hexdigest()
+		dockey = random.randint(100000,999999)
 		if not doctors:
-			towrite = "%s\t%s\t%s" % (name.value,username.value,passhashed)
+			towrite = "%s\t%s\t%s\t%d" % (name.value,username.value,passhashed,dockey)
 		else:
-			towrite = "\n%s\t%s\t%s" % (name.value,username.value,passhashed)
+			towrite = "\n%s\t%s\t%s\t%d" % (name.value,username.value,passhashed,dockey)
 		with open(FILENAME, "a") as d:
 			d.write(towrite)
-			exit.enable()
-			exit.show()
+		success.value = "Registration successful! Your 6-digit verification key is %d" % (dockey)
+		exit.enable()
+		exit.show()
 	def checkgood():
 		if username.value in usernames:
 			success.value = "This username is already taken. Please try another."
