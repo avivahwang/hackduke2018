@@ -1,1 +1,2 @@
-# hackduke2018
+# litlitlit
+A simple chat application for anonymous patient-provider communication
