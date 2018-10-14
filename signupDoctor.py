@@ -40,7 +40,7 @@ def Main():
 		d = open(FILENAME,"w+")
 		d.close()
 	app = App(title = "New doctor registration")
-	intro = Text(app, text = "Welcome to Litlitlit!\n")
+	intro = Text(app, text = "Welcome to AnonyComm!\n")
 	prompt1 = Text(app, text = "Please enter your name (First Last).")
 	name = TextBox(app, width = 20)
 	prompt2 = Text(app, text = "Please enter your username.")

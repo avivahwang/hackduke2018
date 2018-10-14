@@ -64,7 +64,7 @@ def Main():
 		err.display()
 	else:
 		app = App(title = "New patient registration")
-		intro = Text(app, text = "Welcome to Litlitlit!\n")
+		intro = Text(app, text = "Welcome to AnonyComm!\n")
 		prompt2 = Text(app, text = "Please enter your username.")
 		username = TextBox(app, width = 20)
 		prompt3 = Text(app, text = "Please enter your password.")

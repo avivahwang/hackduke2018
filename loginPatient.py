@@ -48,7 +48,7 @@ def Main():
 		return["","",False]
 	else:
 		app = App(title = "Patient Login")
-		greet = Text(app, text = "Welcome to litlitlit!\nThis is the login for patients.\n")
+		greet = Text(app, text = "Welcome to AnonyComm!\nThis is the login for patients.\n")
 		prompt1 = Text(app, text = "Username:")
 		username = TextBox(app, width = 20)
 		prompt2 = Text(app, text = "Password:")
