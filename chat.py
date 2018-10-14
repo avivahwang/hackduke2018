@@ -19,23 +19,18 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST,PORT))
 
 def new_thread(conn, chat_num):
-    print 'Type "exit" at any time to leave this chat'
+    print('Type "exit" at any time to leave this chat')
     while True:
         data = conn.recv(4096)
         if not data:
             print_lock.release()
             break
-<<<<<<< HEAD
         if data.decode('ascii') == 'exit':
             print_lock.release()
-            print 'Patient has ended the chat session'
+            print('Patient has ended the chat session')
             break
         print 'Received message from patient:', data.decode('ascii')
-        doc_message = raw_input("Doctor, what is your message? ")
-=======
-        print('Received message from patient:', data.decode('ascii'))
         doc_message = input("Doctor, what is your message? ")
->>>>>>> f8d026c6fc6983a9eeba79f28a39d66a7f2f19ce
         conn.send(doc_message.encode('ascii'))
         if doc_message == 'exit':
             break
@@ -46,7 +41,7 @@ def accept_connections():
     chat_number = 1
     while True:
         conn, addr = s.accept()
-        print 'Starting chat with patient number:',chat_number
+        print('Starting chat with patient number:',chat_number)
         addresses.append(addr)
         print_lock.acquire()
         #start_new_thread(new_thread,(s,conn,chat_number))

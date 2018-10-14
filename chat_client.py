@@ -23,16 +23,10 @@ def execute_client():
         if message == 'exit':
             break
         data = s.recv(4096)
-<<<<<<< HEAD
         if data.decode('ascii') == 'exit':
-            print 'Doctor has ended the chat session'
-=======
-        print('Received message from doctor:', data.decode('ascii'))
-        ask = input("Do you want to exit this chat? (y/n) ")
-        if ask == 'y':
->>>>>>> f8d026c6fc6983a9eeba79f28a39d66a7f2f19ce
+            print('Doctor has ended the chat session')
             break
-        print 'Received message from doctor:', data.decode('ascii')
+        print('Received message from doctor:', data.decode('ascii'))
     s.close()
     
 def Main():
