@@ -42,7 +42,7 @@ def new_thread(conn, chat_num):
 			history4.value = "Patient: %s" % (data.decode('ascii'))
 			if data.decode('ascii') == 'exit':
 				print_lock.release()
-				prompt.text = "Patient has ended the chat session.\nPlease close this window."
+				prompt.value = "Patient has ended the chat session.\nPlease close this window."
 				app.disable()
 		conn.send(message.value.encode('ascii'))
 		if message.value == 'exit':

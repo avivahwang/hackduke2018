@@ -23,7 +23,7 @@ def execute_client():
 			history3.value = history4.value
 			history4.value = "Doctor: %s" % (data.decode('ascii'))
 			if data.decode('ascii') == 'exit':
-				prompt.text = "Doctor has ended the chat session"
+				prompt.value = "Doctor has ended the chat session"
 				app.disable()
 		s.send(message.value.encode('ascii'))
 		if message.value == 'exit':
